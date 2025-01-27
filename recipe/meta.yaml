@@ -11,11 +11,12 @@ source:
 build:
   number: 2
   noarch: python
-  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   host:
     - python {{ python_min }}
+    - setuptools
     - pip
   run:
     - python >={{ python_min }},<3
@@ -40,7 +41,7 @@ test:
 
 about:
   home: http://bitbucket.org/haypo/hachoir/wiki/hachoir-parser
-  license: GPL 2.0
+  license: GPL-2.0-only
   summary: 'Package of Hachoir parsers used to open binary files'
 
 extra:
